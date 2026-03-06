@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardik Patel | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent: #3b82f6;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 10, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-title {
+            background: linear-gradient(to right, #fff 20%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-gradient:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 130, 246, 0.15);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed top-0 w-full z-50 nav-blur px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tighter italic">HP<span class="text-blue-500">.</span></a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#work" class="hover:text-white transition">Work</a>
+                <a href="#skills" class="hover:text-white transition">Skills</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+            <a href="mailto:contact@hardikpatel.dev" class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold hover:bg-blue-500 hover:text-white transition">Let's Talk</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="blob top-20 -left-20"></div>
+        <div class="blob bottom-0 -right-20"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="text-blue-500 font-mono mb-4 tracking-widest uppercase text-sm">Based in India</p>
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 hero-title leading-tight">
+                Hardik Patel
+            </h1>
+            <p class="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                A Full Stack Developer crafting seamless digital experiences with modern web technologies.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#work" class="bg-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition">See My Work</a>
+                <div class="flex items-center gap-6 px-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center gap-4 mb-16">
+                <h2 class="text-3xl font-bold">Featured Projects</h2>
+                <div class="h-[1px] flex-1 bg-white/10"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card-gradient p-10 rounded-[2.5rem]">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="p-4 bg-blue-500/10 rounded-2xl">
+                            <i class="fas fa-code text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">FinTech Application</h3>
+                    <p class="text-gray-400 font-light mb-8">Developed a secure banking dashboard focused on user-centric financial tracking and real-time transactions.</p>
+                    <div class="flex gap-3">
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider">React</span>
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="card-gradient p-10 rounded-[2.5rem]">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="p-4 bg-purple-500/10 rounded-2xl">
+                            <i class="fas fa-shopping-bag text-purple-500 text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2023</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">E-Commerce Platform</h3>
+                    <p class="text-gray-400 font-light mb-8">Built a high-performance shopping experience with a custom headless CMS integration.</p>
+                    <div class="flex gap-3">
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider">Next.js</span>
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider">Shopify</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-20 px-6 bg-[#0f0f12]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-10">Have a project in mind?</h2>
+            <a href="mailto:hello@hardikpatel.dev" class="text-2xl md:text-4xl text-blue-500 hover:text-white transition duration-500 underline underline-offset-8">
+                hello@hardikpatel.dev
+            </a>
+            
+            <div class="mt-20 flex justify-center gap-10 text-gray-500 text-sm">
+                <a href="#" class="hover:text-white">GitHub</a>
+                <a href="#" class="hover:text-white">LinkedIn</a>
+                <a href="#" class="hover:text-white">Resume</a>
+            </div>
+            <p class="mt-10 text-gray-700 text-xs uppercase tracking-widest">&copy; 2026 Hardik Patel. Crafted with care.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
