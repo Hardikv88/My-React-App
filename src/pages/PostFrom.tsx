@@ -51,6 +51,7 @@ export default function PostFrom(props: {data: FormValues}) {
 
   const onSubmit = (data: FormValues) => {
     console.log("Form Data:", data);
+    console.log("Form Data:", data.name);
   };
  
  componentRenderCount ++;
