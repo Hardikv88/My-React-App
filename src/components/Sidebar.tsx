@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 /* ================= Sidebar ================= */
@@ -11,14 +11,6 @@ type SidebarProps = {
 
 function Sidebar({ open, onClick }: SidebarProps) {
   // 👇 ONE selected state
-  const [active, setActive] = useState<string>("dashboard");
-
-  const handleClick = (label: string) => {
-    const value = label.toLowerCase();
-
-    setActive(value);        // set active
-    onClick?.(label);        // keep old logic
-  };
 
   return (
     <aside
@@ -41,25 +33,21 @@ function Sidebar({ open, onClick }: SidebarProps) {
       <div className="flex flex-col gap-1">
         <MenuItem
           label="Dashboard"
-          active={active}
-          onClick={handleClick}
+          path="/"
         />
 
         <MenuItem
           label="Users"
-          active={active}
-          onClick={handleClick}
+          path="/users"
         />
 
         <MenuItem
           label="Settings"
-          active={active}
-          onClick={handleClick}
+          path="/settings"
         />
         <MenuItem
           label="PostFrom"
-          active={active}
-          onClick={handleClick}
+          path="/postform"
         />
       </div>
     </aside>
@@ -72,29 +60,27 @@ export default Sidebar;
 
 type MenuItemProps = {
   readonly label: string;
-  readonly active: string;
-  readonly onClick?: (value: string) => void;
+  readonly path: string;
 };
 
-function MenuItem({ label, active, onClick }: MenuItemProps) {
-  const value = label.toLowerCase();
-
-  const isActive = active === value;
-
+function MenuItem({ label, path}: MenuItemProps) {
   return (
-    <div
-      onClick={() => onClick?.(label)}
-      className={`
+    <NavLink
+      to={path}
+      state={{ abc: '12344' , xyz: "sdsf"}}
+      className={({ isActive }) =>
+        `
         px-3 py-2 rounded-lg cursor-pointer
-        transition text-sm font-medium
+        transition text-sm font-medium block
         ${
           isActive
             ? "bg-blue-600 text-white"
             : "text-gray-700 hover:bg-gray-100"
         }
-      `}
+        `
+      }
     >
       {label}
-    </div>
+    </NavLink>
   );
 }

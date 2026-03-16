@@ -57,7 +57,7 @@ function AdminLayout({ children }: AdminLayoutProps) {
           {children}
           <Application page={page} /> 
               
-          </Content>
+        
         </Content>
       </Layout>
     </Layout>

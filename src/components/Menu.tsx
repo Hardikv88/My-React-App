@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import Icon, {
   AppstoreOutlined,
   CalendarOutlined,
@@ -7,7 +6,7 @@ import Icon, {
   MailOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
-import { Divider, Menu, Switch } from 'antd';
+import { Menu,} from 'antd';
 import type { GetProp, MenuProps } from 'antd';
 
 type MenuTheme = GetProp<MenuProps, 'theme'>;
@@ -65,34 +64,14 @@ const items: MenuItem[] = [
 ];
 
 function MenuItemList(){
-  const navigate = useNavigate();
+  
 
-  const handleMenuClick = (e: any) => {
-    const routeMap: { [key: string]: string } = {
-      '1': '/page1',
-      '2': '/page2',
-      '3': '/page3',
-      '4': '/page4',
-      '5': '/page5',
-      '6': '/page6',
-      '7': '/page7',
-      '8': '/page8',
-      '9': '/page9',
-      '10': '/page10',
-    };
-
-    const path = routeMap[e.key];
-    if (path) {
-      navigate(path);
-      console.log(`Navigating to ${path}`);
-    }
-  };
+  
 
   return (
       <Menu
         style={{ width: 200 ,border: "none"}}
         defaultSelectedKeys={['1']}
-        onClick={handleMenuClick}
         defaultOpenKeys={['sub1']}
         mode={'inline'}
         theme={'light'}

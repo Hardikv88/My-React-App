@@ -1,8 +1,6 @@
 import { Avatar, Dropdown, Space } from "antd";
 import reactLogo from "../assets/avatar.png";
 
-
-
 import Icon, {
   UserOutlined,
   LogoutOutlined,
@@ -12,6 +10,7 @@ import Icon, {
   DownOutlined,
   CaretDownOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -30,6 +29,7 @@ const items = [
     icon: <LogoutOutlined />,
   },
 ];
+
 
 function UserMenu() {
   const handleClick = ({ key }: { key: string }) => {
@@ -54,7 +54,8 @@ function UserMenu() {
       trigger={["click"]}
     >
       <Space style={{ cursor: "pointer", alignContent: "right" }}>
-        <Avatar icon={<UserOutlined />} src={reactLogo} size={40} />
+        <Link to='/profile'>
+        <Avatar icon={<UserOutlined />} src={reactLogo} size={40} /></Link>
         <CaretDownOutlined />
       </Space>
     </Dropdown>
