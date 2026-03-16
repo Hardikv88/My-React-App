@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function Users() {
   const [todos, setTodos] = useState<string[]>([]);
@@ -6,6 +7,10 @@ function Users() {
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editValue, setEditValue] = useState("");
+
+  const location = useLocation();
+
+  console.log(location.state)
 
   // Load from localStorage
   useEffect(() => {

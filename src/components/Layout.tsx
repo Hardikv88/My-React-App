@@ -1,13 +1,8 @@
-
-import React, { JSX, useState } from "react";
+import React, {useState } from "react";
 import Sidebar from "./Sidebar";
-import Users from "../pages/Users";
-import Settings from "../pages/Settings";
-import Dashboard from "../pages/Dashboard";
 import Header from "./Header";
-import { Row } from "antd";
-import { TypeIcon } from "antd/es/message/PurePanel";
-import PostFrom from "../pages/PostFrom";
+import { Outlet } from "react-router-dom";
+import { UserContextProvider } from "../layouts/UserContext";
 
 
 function Layout() {
@@ -16,6 +11,7 @@ function Layout() {
 
   let newValue: boolean = false;
   return (
+    <UserContextProvider>
     <div style={styles.container}>
       {/* Drawer */}
       <Sidebar open={open} onClick={(value) => setPage(value.toLocaleLowerCase())} />
@@ -28,10 +24,11 @@ function Layout() {
         
       {/* Fragment Area */}
       <main className="flex-1 overflow-auto bg-gray-100">
-        {pages[page]}
+          <Outlet />
       </main>
     </div>
     </div>
+    </UserContextProvider>
   );
 }
 
@@ -48,7 +45,6 @@ const styles: any = {
     display: "flex",
     flexDirection: "flex-row",
   },
-
   content: {
     padding: 20,
     width: "100%",
@@ -56,22 +52,3 @@ const styles: any = {
     flex: 1,
   },
 };
-
-const _userData = {
-  name: "Hardik Patel",
-  email: "patel@yopmail.com",
-  phone: "56789098765",
-  gender: "male",
-  country: "India",
-  state: "Gujarat",
-  city: "Ahmedabad",
-  address: "this user information",
-};
-
-const pages: Record<string, JSX.Element> = {
-  dashboard: <Dashboard />,
-  users: <Users />,
-  settings: <Settings />,
-  postfrom: <PostFrom data={_userData} />,
-};
-

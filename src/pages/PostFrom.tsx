@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { data } from "react-router-dom";
+import { UserContext } from "../layouts/UserContext";
 
 type FormValues = {
   name: string;
@@ -45,16 +46,22 @@ export default function PostFrom(props: {data: FormValues}) {
     city: props.data.city,
     address: props.data.address,
   }});
+  const userContext = useContext(UserContext);
 
   const selectedCountry = watch("country");
   const selectedState = watch("state");
 
   const onSubmit = (data: FormValues) => {
     console.log("Form Data:", data);
+    userContext.setUserName(data.name);
   };
  
  componentRenderCount ++;
-  return (
+  
+
+   return (
+      
+  
     <div className="max-w-xl mx-auto p-6 bg-white shadow rounded-lg">
     <center>
     <h1 className="text-xl font-bold mb-4">User Information</h1>
@@ -223,7 +230,6 @@ export default function PostFrom(props: {data: FormValues}) {
             Cancel
           </button>
         </div>
-
       </form>
     </div>
   );
