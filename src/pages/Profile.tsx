@@ -1,6 +1,6 @@
 import React from 'react';
 import avatarUrl from "../assets/avatar.png";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // 1. Define the Data Type
 interface ProfileProps {
@@ -18,18 +18,21 @@ interface ProfileProps {
 }
 
 export default function Profile(){
+  const navigate = useNavigate();
    const buttonClick = () => {
         console.log('Clikc');
+        navigate('/')
     }
 
   return (
     <>
-    <Link to={'/'}>
-    <button  className="bg-blue-600 text-white mb-6 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+  
+    <button 
+    onClick={buttonClick}
+    className="bg-blue-600 text-white mb-6 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
     >
             Go to Back
           </button>
-          </Link>
     
     <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-3xl p-6 shadow-sm font-sans text-gray-800">
             
