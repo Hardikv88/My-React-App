@@ -49,6 +49,10 @@ function Sidebar({ open, onClick }: SidebarProps) {
           label="PostFrom"
           path="/postform"
         />
+        <MenuItem
+          label="RestApis" 
+          path="/apis"
+        />
       </div>
     </aside>
   );

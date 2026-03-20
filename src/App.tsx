@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Settings from "./pages/Settings";
 import PostFrom from "./pages/PostFrom";
 import Profile from "./pages/Profile";
+import RestApis from "./pages/RestApisScreen";
 
 const userData = {
   name: "Hardik",
@@ -26,6 +27,7 @@ function App() {
         <Route path="users" element={<Users />} />
         <Route path="settings" element={<Settings />} />
         <Route path="postform" element={<PostFrom data={userData} />} />
+         <Route path="apis" element={<RestApis/>} />
       </Route>
         <Route path="profile" element={<Profile />} />
     </Routes>

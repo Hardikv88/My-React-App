@@ -7,25 +7,6 @@ import Users from "./pages/Users";
 import Settings from "./pages/Settings";
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-       { 
-        path: "home", 
-        element: <Home /> },
-      { path: "users", 
-        element: <Users /> },
-       { path: "settings", 
-        element: <Settings /> },
-      ]
-  },
-]); 
-
-
-
-
 ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 ).render(
