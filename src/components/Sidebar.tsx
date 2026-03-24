@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 
 /* ================= Sidebar ================= */
 
@@ -11,11 +9,10 @@ type SidebarProps = {
 
 function Sidebar({ open, onClick }: SidebarProps) {
   // 👇 ONE selected state
-
   return (
     <aside
       className={`
-        h-screen bg-white border-r shadow-sm
+        h-screen bg-white shadow-sm
         transition-all duration-300
         ${open ? "w-[220px]" : "w-[60px]"}
         p-2 flex flex-col
@@ -31,24 +28,14 @@ function Sidebar({ open, onClick }: SidebarProps) {
 
       {/* Menu */}
       <div className="flex flex-col gap-1">
-        <MenuItem
-          label="Dashboard"
-          path="/"
-        />
+        <MenuItem label="Dashboard" path="/" />
 
-        <MenuItem
-          label="Users"
-          path="/users"
-        />
+        <MenuItem label="Users" path="/users" />
 
-        <MenuItem
-          label="Settings"
-          path="/settings"
-        />
-        <MenuItem
-          label="PostFrom"
-          path="/postform"
-        />
+        <MenuItem label="Settings" path="/settings" />
+        <MenuItem label="PostFrom" path="/postform" />
+        <MenuItem label="RestApis" path="/apis" />
+        <MenuItem label="CounterWithRedux" path="/counter" />
       </div>
     </aside>
   );
@@ -63,11 +50,11 @@ type MenuItemProps = {
   readonly path: string;
 };
 
-function MenuItem({ label, path}: MenuItemProps) {
+function MenuItem({ label, path }: MenuItemProps) {
   return (
     <NavLink
       to={path}
-      state={{ abc: '12344' , xyz: "sdsf"}}
+      state={{ abc: "12344", xyz: "sdsf" }}
       className={({ isActive }) =>
         `
         px-3 py-2 rounded-lg cursor-pointer

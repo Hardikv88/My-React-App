@@ -10,7 +10,7 @@ function Users() {
 
   const location = useLocation();
 
-  console.log(location.state)
+  console.log(location.state);
 
   // Load from localStorage
   useEffect(() => {
@@ -56,11 +56,8 @@ function Users() {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-start py-10 px-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-6">
-
         {/* Title */}
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Users List
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Users List</h2>
 
         {/* Input Area */}
         <div className="flex gap-2 mb-4">
@@ -112,9 +109,7 @@ function Users() {
                 </div>
               ) : (
                 <>
-                  <span className="text-gray-800 break-all">
-                    {todo}
-                  </span>
+                  <span className="text-gray-800 break-all">{todo}</span>
 
                   <div className="flex gap-2 ml-2">
                     <button
@@ -139,9 +134,7 @@ function Users() {
 
         {/* Empty State */}
         {todos.length === 0 && (
-          <p className="text-center text-gray-500 mt-6">
-            No users added yet.
-          </p>
+          <p className="text-center text-gray-500 mt-6">No users added yet.</p>
         )}
       </div>
     </div>

@@ -20,7 +20,6 @@ interface ProfileProps {
 export default function Profile(){
   const navigate = useNavigate();
    const buttonClick = () => {
-        console.log('Clikc');
         navigate('/')
     }
 
