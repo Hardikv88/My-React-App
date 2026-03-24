@@ -6,6 +6,10 @@ import {
   ProductResponseModal,
 } from "../services/modals/ProductResponseModal";
 import { Circles } from "react-loader-spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../features/store";
+import { addItem } from "../features/AddCard";
+import useSelection from "antd/es/table/hooks/useSelection";
 const Page_Size = 5;
 
 export default function RestApis() {
@@ -16,7 +20,12 @@ export default function RestApis() {
   const [currentPage, setCurrentPage] = useState(1);
   const startPosition = (currentPage - 1) * Page_Size;
   const endPosition = startPosition + Page_Size;
-  console.log({ startPosition, endPosition, currentPage });
+  
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const selectItems = useSelector((state: RootState) => state.addItem.items);
+  console.log(selectItems);
 
   useEffect(() => {
     getProducts();
@@ -31,7 +40,6 @@ export default function RestApis() {
         .catch((err) => {
           console.log("Errr", err.message);
         });
-      console.log("This is new response ::");
       setProductsData(response.data.products);
       setLoading(false);
     } catch (error) {
@@ -42,7 +50,6 @@ export default function RestApis() {
 
   const onPageChange = (n: number) => {
     setCurrentPage(n);
-    console.log(n);
   };
 
   if (isLoading) {
@@ -98,9 +105,22 @@ export default function RestApis() {
                     ${item.price}
                   </p>
                 </div>
-                <button className="bg-gray-900 hover:bg-teal-600 text-white p-3 rounded-2xl transition-colors shadow-lg">
-                  <ShoppingCart size={20} />
-                </button>
+                {selectItems.find((cardItems) => cardItems.id == item.id) ? (
+                  <button
+                    onClick={() => dispatch(addItem(item))}
+                    disabled
+                    className="bg-gray-900 text-white p-3 rounded-2xl shadow-lg opacity-50 cursor-not-allowed"
+                  >
+                    <ShoppingCart size={20} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => dispatch(addItem(item))}
+                    className="bg-gray-900 hover:bg-teal-600 text-white p-3 rounded-2xl transition-colors shadow-lg"
+                  >
+                    <ShoppingCart desize={20} />
+                  </button>
+                )}
               </div>
               {/* Availability Status */}
               <div className="mt-4 pt-4 border-t border-gray-50 flex items-center gap-2">

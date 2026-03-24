@@ -1,10 +1,9 @@
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd'
-import UserMenu from './ImageDropdown';
+import UserMenu from "./ImageDropdown";
 
-import { useContext } from 'react';
-import { UserContext } from '../layouts/UserContext';
-
+import { useContext } from "react";
+import { UserContext } from "../layouts/UserContext";
+import { useSelector } from "react-redux";
+import { RootState } from "../features/store";
 
 type HeaderProps = {
   onMenuClick: () => void;
@@ -12,10 +11,9 @@ type HeaderProps = {
 
 function Header({ onMenuClick }: HeaderProps) {
   const user = useContext(UserContext);
-  console.log(user);
+  const count = useSelector((state: RootState) => state.counter.value);
   return (
     <header className="display h-[55px] bg-white border-b border-gray-200 flex items-center justify-between px-4 shadow-sm">
-
       {/* Left Section */}
       <div className="flex items-center gap-3">
         {/* Menu Button (Optional) */}
@@ -30,19 +28,17 @@ function Header({ onMenuClick }: HeaderProps) {
         */}
 
         <h3 className="text-lg font-semibold text-gray-800">
-          Hi {user.userName}</h3>
+          Hi {user.userName}
+        </h3>
       </div>
 
       {/* Right Section */}
       <div className="flex items-center gap-3">
+        <h3>Counter: {count}</h3>
         <UserMenu />
       </div>
-
     </header>
   );
 }
 
 export default Header;
-
-
-

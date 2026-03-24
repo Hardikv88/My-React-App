@@ -7,6 +7,7 @@ import Settings from "./pages/Settings";
 import PostFrom from "./pages/PostFrom";
 import Profile from "./pages/Profile";
 import RestApis from "./pages/RestApisScreen";
+import CounterWithRedux from "./pages/CounterWithRedux";
 
 const userData = {
   name: "Hardik",
@@ -28,6 +29,8 @@ function App() {
         <Route path="settings" element={<Settings />} />
         <Route path="postform" element={<PostFrom data={userData} />} />
          <Route path="apis" element={<RestApis/>} />
+         <Route path="apis" element={<RestApis/>} />
+          <Route path="counter" element={<CounterWithRedux/>} />
       </Route>
         <Route path="profile" element={<Profile />} />
     </Routes>

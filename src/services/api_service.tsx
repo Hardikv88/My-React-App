@@ -25,7 +25,6 @@ export const CustomApisQuery = (urlPath: string) => {
             setError(false)
             setLoading(true)
             const response = await axios.get(urlPath,{signal: controller.signal})
-            console.log(response.data.products)
             setData(response.data.products)
             setLoading(false)
             return response.data.products as UserData[]
