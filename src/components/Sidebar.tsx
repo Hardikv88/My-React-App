@@ -29,13 +29,13 @@ function Sidebar({ open, onClick }: SidebarProps) {
       {/* Menu */}
       <div className="flex flex-col gap-1">
         <MenuItem label="Dashboard" path="/" />
-
         <MenuItem label="Users" path="/users" />
-
         <MenuItem label="Settings" path="/settings" />
         <MenuItem label="PostFrom" path="/postform" />
-        <MenuItem label="RestApis" path="/apis" />
         <MenuItem label="CounterWithRedux" path="/counter" />
+        <MenuItem label="RestApis" path="/apis" />
+         <MenuItem label="CartView" path="/cartView" />
+        
       </div>
     </aside>
   );
