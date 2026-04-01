@@ -32,10 +32,9 @@ function Sidebar({ open, onClick }: SidebarProps) {
         <MenuItem label="Users" path="/users" />
         <MenuItem label="Settings" path="/settings" />
         <MenuItem label="PostFrom" path="/postform" />
-        <MenuItem label="CounterWithRedux" path="/counter" />
+        <MenuItem label="Hooks" path="/hooks" />
         <MenuItem label="RestApis" path="/apis" />
-         <MenuItem label="CartView" path="/cartView" />
-        
+        <MenuItem label="CartView" path="/cartView" />
       </div>
     </aside>
   );
