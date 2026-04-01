@@ -23,7 +23,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   counter: counterReducer, 
-    addItem:addCardItem
+    addItem:addCardItem,
+    
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
