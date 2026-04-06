@@ -1,16 +1,17 @@
 import UserMenu from "./ImageDropdown";
 
-import { useContext } from "react";
-import { UserContext } from "../layouts/UserContext";
 import { useSelector } from "react-redux";
 import { RootState } from "../features/store";
+import { useAuth } from "../hooks/useAuth";
+import { use } from "react";
 
 type HeaderProps = {
   onMenuClick: () => void;
 };
 
 function Header({ onMenuClick }: HeaderProps) {
-  const user = useContext(UserContext);
+  //const user = useContext(UserContext);
+  const { user } = useAuth();
   const count = useSelector((state: RootState) => state.counter.value);
   return (
     <header className="display h-[55px] bg-white border-b border-gray-200 flex items-center justify-between px-4 shadow-sm">
@@ -28,7 +29,7 @@ function Header({ onMenuClick }: HeaderProps) {
         */}
 
         <h3 className="text-lg font-semibold text-gray-800">
-          Hi {user.userName}
+          Hi {user?.firstName} {user?.lastName}
         </h3>
       </div>
 

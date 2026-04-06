@@ -2,10 +2,9 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 class ApiHelper {
   private axiosInstance: AxiosInstance;
-
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: "https://dummyjson.com/", // 👉 Change your base URL
+      baseURL: import.meta.env.VITE_BASE_URL, // 👉 Change your base URL
       timeout: 30000,
       headers: {
         "Content-Type": "application/json",

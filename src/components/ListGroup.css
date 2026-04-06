@@ -1,0 +1,72 @@
+/*
+  Custom styles for ListGroup and TabsBar components
+  Theme: White and Sky (light blue)
+  Responsive and modern look
+*/
+
+.list-group-container {
+  background: linear-gradient(135deg, #fff 60%, #e0f2fe 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(96, 165, 250, 0.08);
+  padding: 2rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 480px;
+  width: 100%;
+}
+
+.list-group-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0ea5e9;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.list-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.list-group-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #0369a1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.04);
+}
+
+.list-group-btn.selected {
+  background: linear-gradient(90deg, #38bdf8 60%, #fff 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.12);
+}
+
+@media (max-width: 600px) {
+  .list-group-container {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+  }
+  .list-group-title {
+    font-size: 1.3rem;
+  }
+  .list-group-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+.tabs-bar-title {
+  font-size: 1.5rem;
+  color: #0ea5e9;
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+}

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import TabsBar from "./TabsBar";
+import "./ListGroup.css";
 
 function ListGroup() {
-  // Type: string array
   const items: string[] = [
     "Rajkot",
     "Ahmedabad",
@@ -10,21 +10,18 @@ function ListGroup() {
     "Vadodara",
     "Gandhinagar",
   ];
-
-  // Type: number (or null if nothing selected)
   const [selectIndex, setSelectIndex] = useState<number | null>(0);
-  
+
   return (
     <>
-      <div>
-        <h1>List Group</h1>
-        <ul className="list-group">
+      <div className="list-group-container">
+        <h1 className="list-group-title">List Group</h1>
+        <ul className="list-group-list">
           {items.length === 0 && <p>No items found.</p>}
-
           {items.map((item, index) => (
             <button
               key={item}
-              style={{ backgroundColor: index === selectIndex ? "red" : "white" }}
+              className={`list-group-btn${index === selectIndex ? " selected" : ""}`}
               onClick={() => setSelectIndex(index)}
             >
               {item}
@@ -32,7 +29,7 @@ function ListGroup() {
           ))}
         </ul>
       </div>
-      <h1>Tabs Bar Component Below</h1>
+      <h1 className="tabs-bar-title">Tabs Bar Component Below</h1>
       <TabsBar />
     </>
   );

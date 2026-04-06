@@ -11,6 +11,7 @@ import Icon, {
   CaretDownOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const items = [
   {
@@ -30,16 +31,18 @@ const items = [
   },
 ];
 
-
 function UserMenu() {
+  const { logout, user } = useAuth();
+
   const handleClick = ({ key }: { key: string }) => {
     if (key === "3") {
       console.log("Logout clicked");
+      logout();
       // logout logic here
-    }else if (key === "1") {
+    } else if (key === "1") {
       console.log("Profile clicked");
       // profile logic here
-    }else if (key === "2") {
+    } else if (key === "2") {
       console.log("Settings clicked");
       // settings logic here
     }
@@ -54,8 +57,9 @@ function UserMenu() {
       trigger={["click"]}
     >
       <Space style={{ cursor: "pointer", alignContent: "right" }}>
-        <Link to='/profile'>
-        <Avatar icon={<UserOutlined />} src={reactLogo} size={40} /></Link>
+        <Link to="/profile">
+          <Avatar icon={<UserOutlined />} src={user?.image} size={40} />
+        </Link>
         <CaretDownOutlined />
       </Space>
     </Dropdown>

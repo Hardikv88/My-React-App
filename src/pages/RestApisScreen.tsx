@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import apiHelper from "../services/ApiHelper";
-import {
-  Product,
-  ProductResponseModal,
-} from "../services/modals/ProductResponseModal";
+import { Product, ProductResponseModal } from "../modals/ProductResponseModal";
 import { Circles } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
-import { AppDispatch} from "../features/store";
+import { AppDispatch } from "../features/store";
 import { addItem } from "../features/AddCard";
 import CardView from "../components/CardView";
+import ShowLoader from "../components/ShowLoader";
 const Page_Size = 6;
 
 export default function RestApis() {
@@ -22,7 +20,6 @@ export default function RestApis() {
 
   const dispatch = useDispatch<AppDispatch>();
 
- 
   useEffect(() => {
     getProducts();
   }, []);
@@ -36,7 +33,6 @@ export default function RestApis() {
         .catch((err) => {
           console.log("Errr", err.message);
         });
-
       setProductsData(response.data.products);
       setLoading(false);
     } catch (error) {
@@ -50,11 +46,7 @@ export default function RestApis() {
   };
 
   if (isLoading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/20">
-        <Circles height="50" width="50" color="blue" />
-      </div>
-    );
+    return <ShowLoader />;
   }
 
   const handleClick = (data: Product) => {
@@ -67,7 +59,7 @@ export default function RestApis() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 bg-gray-50">
         {productsData.slice(startPosition, endPosition).map((item) => (
           <CardView
-             key={item.id}
+            key={item.id}
             isVisibleCart={false}
             productItemData={item}
             btnCallBack={() => handleClick(item)}

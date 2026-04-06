@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Product } from "../services/modals/ProductResponseModal";
+import { Product } from "../modals/ProductResponseModal";
 import { Star, Trash2, ShoppingCart } from "lucide-react";
 import { RootState } from "../features/store";
 
