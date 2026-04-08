@@ -3,7 +3,6 @@ import apiHelper from "../../services/ApiHelper";
 import { useState } from "react";
 import ShowLoader from "../../components/ShowLoader";
 import { LoginResponseModel } from "../../modals/LoginResponseModel";
-import { setUser } from "../../utils/localStorage";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function LoginScreen() {

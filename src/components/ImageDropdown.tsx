@@ -1,16 +1,12 @@
 import { Avatar, Dropdown, Space } from "antd";
-import reactLogo from "../assets/avatar.png";
 
 import Icon, {
   UserOutlined,
   LogoutOutlined,
   SettingOutlined,
-  MoreOutlined,
-  DropboxOutlined,
-  DownOutlined,
   CaretDownOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const items = [
@@ -33,18 +29,18 @@ const items = [
 
 function UserMenu() {
   const { logout, user } = useAuth();
+  const navigate = useNavigate();
 
   const handleClick = ({ key }: { key: string }) => {
     if (key === "3") {
-      console.log("Logout clicked");
       logout();
       // logout logic here
     } else if (key === "1") {
-      console.log("Profile clicked");
       // profile logic here
+      navigate("/profile");
     } else if (key === "2") {
-      console.log("Settings clicked");
       // settings logic here
+      navigate("/settings");
     }
   };
 
@@ -57,9 +53,7 @@ function UserMenu() {
       trigger={["click"]}
     >
       <Space style={{ cursor: "pointer", alignContent: "right" }}>
-        <Link to="/profile">
-          <Avatar icon={<UserOutlined />} src={user?.image} size={40} />
-        </Link>
+        <Avatar icon={<UserOutlined />} src={user?.image} size={40} />
         <CaretDownOutlined />
       </Space>
     </Dropdown>

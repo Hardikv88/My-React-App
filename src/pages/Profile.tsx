@@ -1,87 +1,76 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import avatarUrl from "../assets/avatar.png";
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../hooks/useAuth";
 
-// 1. Define the Data Type
-interface ProfileProps {
-  name: string;
-  role: string;
-  email: string;
-  phone: string;
-  experience: string;
-  allocatedDesk: string;
-  reportingTo: {
-    name: string;
-    avatarUrl: string;
-  };
-  avatarUrl: string;
-}
-
-export default function Profile(){
+export default function Profile() {
   const navigate = useNavigate();
-   const buttonClick = () => {
-        navigate('/')
-    }
+  const { user } = useAuth();
+
+  // ✅ Dummy Data (replace with API / context)
 
   return (
-    <>
-  
-    <button 
-    onClick={buttonClick}
-    className="bg-blue-600 text-white mb-6 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-    >
-            Go to Back
-          </button>
-    
-    <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-3xl p-6 shadow-sm font-sans text-gray-800">
-            
-          
-      {/* Social Icons Header */}
-      <div className="flex justify-end gap-3 mb-2">
-        {/* <Linkedin size={20} className="text-blue-700 cursor-pointer" />
-        <Instagram size={20} className="text-pink-600 cursor-pointer" />
-        <Facebook size={20} className="text-blue-600 cursor-pointer" /> */}
-      </div>
-    
-      {/* Avatar & Name Section */}
-      <div className="flex flex-col items-center mb-6">
-        <div className="w-32 h-32 rounded-full border-4 border-teal-50 overflow-hidden mb-4">
-          <img src={avatarUrl} alt={'name'} className="w-full h-full object-cover" />
-        </div>
-        <h2 className="text-2xl font-bold tracking-tight">{'name'}</h2>
-        <p className="text-gray-500 font-medium">{'role'}</p>
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-white shadow px-4 py-2 rounded-lg hover:bg-gray-100 transition"
+        >
+          ← Back
+        </button>
       </div>
 
-      <hr className="border-gray-100 mb-6" />
+      {/* Profile Card */}
+      <div className="max-w-md mx-auto bg-white rounded-3xl shadow-md p-6">
+        {/* Avatar + Name */}
+        <div className="flex flex-col items-center text-center mb-6">
+          <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-blue-100 mb-4">
+            <img
+              src={user?.image}
+              alt="profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-      {/* Contact & Info Section */}
-      <div className="space-y-4 mb-8">
-        <div className="flex items-center gap-3 text-teal-600">
-          {/* <Mail size={20} /> */}
-          <a href={`mailto:${'email'}`} className="hover:underline">{'Email'}</a>
+          <h2 className="text-xl font-bold text-gray-800">
+            {user?.firstName} {user?.lastName}
+          </h2>
+
+          <p className="text-gray-500">{user?.email}</p>
         </div>
-        <div className="flex items-center gap-3 text-teal-600">
-          {/* <Phone size={20} /> */}
-          <span>{'Phone'}</span>
+
+        {/* Divider */}
+        <div className="border-t mb-6"></div>
+
+        {/* Info Section */}
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <span className="text-gray-500">Email</span>
+            <span className="font-medium text-gray-800">{user?.email}</span>
+          </div>
+
+          <div className="flex justify-between">
+            <span className="text-gray-500">First Name</span>
+            <span className="font-medium text-gray-800">{user?.firstName}</span>
+          </div>
+
+          <div className="flex justify-between">
+            <span className="text-gray-500">Last Name</span>
+            <span className="font-medium text-gray-800">{user?.lastName}</span>
+          </div>
+
+          <div className="flex justify-between">
+            <span className="text-gray-500">Gender</span>
+            <span className="font-medium text-gray-800">{user?.gender}</span>
+          </div>
         </div>
-        <div className="flex items-center gap-3 text-teal-600">
-          {/* <Briefcase size={20} /> */}
-          <span>{'Experience'}</span>
-        </div>
-        <div className="flex items-center gap-3 text-teal-600">
-          {/* <Phone size={20} /> */}
-          <span>{'Address'}</span>
-        </div>
+
+        {/* Edit Button */}
+        <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition">
+          Edit Profile
+        </button>
       </div>
-
-     
-      
-      
     </div>
-        </>
   );
-};
-function buttonClick() {
-    throw new Error('Function not implemented.');
 }
-

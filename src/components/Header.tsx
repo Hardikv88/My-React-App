@@ -1,9 +1,7 @@
 import UserMenu from "./ImageDropdown";
-
 import { useSelector } from "react-redux";
 import { RootState } from "../features/store";
 import { useAuth } from "../hooks/useAuth";
-import { use } from "react";
 
 type HeaderProps = {
   onMenuClick: () => void;

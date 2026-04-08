@@ -4,7 +4,6 @@ import Dashboard from "../pages/Dashboard";
 import PostFrom from "../pages/PostFrom";
 import RestApis from "../pages/RestApisScreen";
 import CartViewScreen from "../pages/CartViewScreen";
-import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
 import CounterWithRedux from "../pages/CounterWithRedux";
 import HooksScreen from "../pages/hooks/HooksScreen";
@@ -15,6 +14,7 @@ import LoginScreen from "../pages/authentication/LoginScreen";
 import Users from "../pages/Users";
 import PublicRoute from "./PublicRoute";
 import ProtectedRoute from "./ProtectedRoute";
+import Settings from "../pages/settings/Settings";
 
 const userData = {
   name: "Hardik",
