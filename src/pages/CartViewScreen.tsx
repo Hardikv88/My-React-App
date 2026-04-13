@@ -9,17 +9,16 @@ export default function CartViewScreen() {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = (id: number) => {
-    console.log("handleClick", id);
     dispatch(removeItem(id));
   };
 
   if (cartItems.items.length == 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-        <p className="text-2xl font-semibold text-gray-600">
+      <div className="flex flex-col items-center justify-center h-[60vh] text-center dark:bg-gray-900">
+        <p className="text-2xl font-semibold text-gray-600 dark:text-white">
           No Products Found
         </p>
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-400 mt-2 dark:text-white">
           Please try again later or add some products
         </p>
       </div>
@@ -29,7 +28,7 @@ export default function CartViewScreen() {
   return (
     // Grid layout: 1 col on mobile, 3 on desktop
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 bg-gray-50">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 bg-gray-50 dark:bg-gray-900">
       {cartItems.items.map((item) => (
         <CardView
           key={item.id}

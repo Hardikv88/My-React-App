@@ -1,5 +1,4 @@
 import Layout from "./components/Layout";
-import AdminLayout from "./layouts/AdminLayout";
 
 
 

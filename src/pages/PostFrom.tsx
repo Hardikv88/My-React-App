@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { data } from "react-router-dom";
-import { UserContext } from "../layouts/UserContext";
+import { UserContext } from "../context/UserContext";
 
 type FormValues = {
   name: string;
@@ -29,23 +28,25 @@ const cities: Record<string, string[]> = {
 
 let componentRenderCount = 0;
 
-export default function PostFrom(props: {data: FormValues}) {
+export default function PostFrom(props: { data: FormValues }) {
   const {
     register,
     handleSubmit,
     watch,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({defaultValues: {
-    name: props.data.name,
-    email: props.data.email,
-    phone: props.data.phone,
-    gender: props.data.gender,
-    country: props.data.country,
-    state: props.data.state,
-    city: props.data.city,
-    address: props.data.address,
-  }});
+  } = useForm<FormValues>({
+    defaultValues: {
+      name: props.data.name,
+      email: props.data.email,
+      phone: props.data.phone,
+      gender: props.data.gender,
+      country: props.data.country,
+      state: props.data.state,
+      city: props.data.city,
+      address: props.data.address,
+    },
+  });
   const userContext = useContext(UserContext);
 
   const selectedCountry = watch("country");
@@ -55,25 +56,23 @@ export default function PostFrom(props: {data: FormValues}) {
     console.log("Form Data:", data);
     userContext.setUserName(data.name);
   };
- 
- componentRenderCount ++;
-  
 
-   return (
-      
-  
+  return (
     <div className="max-w-xl mx-auto p-6 bg-white shadow rounded-lg">
-    <center>
-    <h1 className="text-xl font-bold mb-4">User Information</h1>
-    </center>
-    <h2 className="text-sm text-gray-500 mb-6">Component Render Count: {componentRenderCount}</h2>
+      <center>
+        <h1 className="text-xl font-bold mb-4">User Information</h1>
+      </center>
+      <h2 className="text-sm text-gray-500 mb-6">
+        Component Render Count: {componentRenderCount}
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
         {/* Name */}
         <div>
-           <label htmlFor="name" className="block mb-2 font-medium">Name</label>  
+          <label htmlFor="name" className="block mb-2 font-medium">
+            Name
+          </label>
           <input
-          type="text"
+            type="text"
             id="name"
             placeholder="Name"
             {...register("name", { required: "Name is required" })}
@@ -86,10 +85,12 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* Email */}
         <div>
-            <label htmlFor="email" className="block mb-2 font-medium">Email Address</label>  
+          <label htmlFor="email" className="block mb-2 font-medium">
+            Email Address
+          </label>
           <input
-          id="email"
-          type="email"
+            id="email"
+            type="email"
             placeholder="Email"
             {...register("email", {
               required: "Email required",
@@ -107,10 +108,12 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* Phone */}
         <div>
-          <label htmlFor="phone" className="block mb-2 font-medium">Phone Number</label>
+          <label htmlFor="phone" className="block mb-2 font-medium">
+            Phone Number
+          </label>
           <input
-          id="phone"
-          type="number"
+            id="phone"
+            type="number"
             placeholder="Phone"
             {...register("phone", {
               required: "Phone required",
@@ -126,15 +129,27 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* Gender */}
         <div>
-          <label htmlFor="gender" className="block mb-2 font-medium">Gender</label>
+          <label htmlFor="gender" className="block mb-2 font-medium">
+            Gender
+          </label>
 
           <label className="mr-4">
-            <input type="radio" id="male" value="male" {...register("gender", { required: "Select gender" })} />
+            <input
+              type="radio"
+              id="male"
+              value="male"
+              {...register("gender", { required: "Select gender" })}
+            />
             <span className="ml-1">Male</span>
           </label>
 
           <label className="mr-4">
-            <input type="radio" id="female" value="female" {...register("gender")} />
+            <input
+              type="radio"
+              id="female"
+              value="female"
+              {...register("gender")}
+            />
             <span className="ml-1">Female</span>
           </label>
 
@@ -145,7 +160,9 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* Country */}
         <div>
-             <label htmlFor="country" className="block mb-2 font-medium">Country</label>
+          <label htmlFor="country" className="block mb-2 font-medium">
+            Country
+          </label>
           <select
             {...register("country", { required: "Select country" })}
             className="w-full border p-2 rounded"
@@ -163,16 +180,16 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* State */}
         <div>
-             <label htmlFor="state" className="block mb-2 font-medium">State</label>
+          <label htmlFor="state" className="block mb-2 font-medium">
+            State
+          </label>
           <select
             {...register("state", { required: "Select state" })}
             className="w-full border p-2 rounded"
           >
             <option value="">Select State</option>
             {selectedCountry &&
-              states[selectedCountry]?.map((s) => (
-                <option key={s}>{s}</option>
-              ))}
+              states[selectedCountry]?.map((s) => <option key={s}>{s}</option>)}
           </select>
 
           {errors.state && (
@@ -182,16 +199,16 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* City */}
         <div>
-             <label htmlFor="city" className="block mb-2 font-medium">City</label>
+          <label htmlFor="city" className="block mb-2 font-medium">
+            City
+          </label>
           <select
             {...register("city", { required: "Select city" })}
             className="w-full border p-2 rounded"
           >
             <option value="">Select City</option>
             {selectedState &&
-              cities[selectedState]?.map((c) => (
-                <option key={c}>{c}</option>
-              ))}
+              cities[selectedState]?.map((c) => <option key={c}>{c}</option>)}
           </select>
 
           {errors.city && (
@@ -201,7 +218,9 @@ export default function PostFrom(props: {data: FormValues}) {
 
         {/* Address */}
         <div>
-          <label htmlFor="address" className="block mb-2 font-medium">Address</label>
+          <label htmlFor="address" className="block mb-2 font-medium">
+            Address
+          </label>
           <textarea
             id="address"
             placeholder="Address"

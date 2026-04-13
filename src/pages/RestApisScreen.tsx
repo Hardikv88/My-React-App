@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import apiHelper from "../services/ApiHelper";
-import {
-  Product,
-  ProductResponseModal,
-} from "../services/modals/ProductResponseModal";
-import { Circles } from "react-loader-spinner";
+import { Product, ProductResponseModal } from "../modals/ProductResponseModal";
 import { useDispatch } from "react-redux";
-import { AppDispatch} from "../features/store";
+import { AppDispatch } from "../features/store";
 import { addItem } from "../features/AddCard";
 import CardView from "../components/CardView";
+import ShowLoader from "../components/ShowLoader";
 const Page_Size = 6;
 
 export default function RestApis() {
@@ -22,7 +19,6 @@ export default function RestApis() {
 
   const dispatch = useDispatch<AppDispatch>();
 
- 
   useEffect(() => {
     getProducts();
   }, []);
@@ -36,7 +32,6 @@ export default function RestApis() {
         .catch((err) => {
           console.log("Errr", err.message);
         });
-
       setProductsData(response.data.products);
       setLoading(false);
     } catch (error) {
@@ -50,11 +45,7 @@ export default function RestApis() {
   };
 
   if (isLoading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/20">
-        <Circles height="50" width="50" color="blue" />
-      </div>
-    );
+    return <ShowLoader />;
   }
 
   const handleClick = (data: Product) => {
@@ -64,10 +55,10 @@ export default function RestApis() {
   return (
     // Grid layout: 1 col on mobile, 3 on desktop
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 bg-gray-50">
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 bg-gray-50 dark:bg-gray-900">
         {productsData.slice(startPosition, endPosition).map((item) => (
           <CardView
-             key={item.id}
+            key={item.id}
             isVisibleCart={false}
             productItemData={item}
             btnCallBack={() => handleClick(item)}
@@ -79,7 +70,7 @@ export default function RestApis() {
         <button
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
-          className="px-4 py-2 rounded-lg border border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition"
+          className="px-4 py-2 rounded-lg border border-gray-200 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           Previous
         </button>
@@ -108,7 +99,7 @@ export default function RestApis() {
         <button
           disabled={currentPage === totalPages}
           onClick={() => onPageChange(currentPage + 1)}
-          className="px-4 py-2 rounded-lg border border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition"
+          className="px-4 py-2 rounded-lg border border-gray-200 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           Next
         </button>
