@@ -1,6 +1,6 @@
 // src/pages/Settings/components/ThemeSettings.tsx
 
-import React, { use, useEffect, useState } from "react";
+import React from "react";
 import { useTheme } from "../../../context/ThemeContext";
 
 const ThemeSettings: React.FC = () => {
@@ -27,10 +27,10 @@ const ThemeSettings: React.FC = () => {
                 : "border-gray-200 hover:bg-gray-50"
             }`}
         >
-          <div>
+          <button onClick={toggleTheme} className="w-full text-left">
             <h3 className="font-medium text-gray-700">Light Mode</h3>
             <p className="text-sm text-gray-500">Bright and clean appearance</p>
-          </div>
+          </button>
 
           {theme === "light" && (
             <span className="text-blue-500 font-semibold">✓</span>
@@ -46,27 +46,16 @@ const ThemeSettings: React.FC = () => {
                 : "border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
             }`}
         >
-          <div>
-            <h3 className="font-medium text-gray-500 dark:text-white">
-              Dark Mode
-            </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Easy on the eyes at night
-            </p>
-          </div>
+          <button onClick={toggleTheme} className="w-full text-left">
+            <h3 className="font-medium text-gray-700">Dark Mode</h3>
+            <p className="text-sm text-gray-500">Easy on the eyes at night</p>
+          </button>
 
           {theme === "dark" && (
             <span className="text-blue-500 font-semibold">✓</span>
           )}
         </div>
       </div>
-
-      <button
-        onClick={toggleTheme}
-        className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white"
-      >
-        {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
-      </button>
     </div>
   );
 };

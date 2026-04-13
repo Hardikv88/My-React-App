@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { getUser, setUser, removeUser } from "../utils/localStorage";
+import { getUser, setUser, removeUser } from "../utils/LocalStorage";
 import { LoginResponseModel } from "../modals/LoginResponseModel";
 
 interface AuthContextType {

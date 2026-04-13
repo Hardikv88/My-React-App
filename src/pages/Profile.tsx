@@ -1,6 +1,4 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import avatarUrl from "../assets/avatar.png";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Profile() {

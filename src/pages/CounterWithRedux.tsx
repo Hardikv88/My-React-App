@@ -16,7 +16,7 @@ export default function CounterWithRedux() {
         type="button"
         style={{ backgroundColor: "darkolivegreen" }}
         className="m-4 bg-gray-400 text-white px-4 py-2 rounded"
-        onClick={() => dispatch(increment())}
+        onClick={() => dispatch(increment(0))}
       >
         +
       </button>

@@ -13,13 +13,15 @@ function Sidebar({ open, onClick }: SidebarProps) {
     <aside
       className={`
         h-screen bg-white shadow-sm
+        dark:bg-[#273142] dark:shadow-lg
         transition-all duration-300
         ${open ? "w-[220px]" : "w-[60px]"}
         p-2 flex flex-col
+        border-r border-gray-200 dark:border-gray-700
       `}
     >
       {/* Logo */}
-      <h3 className="text-center font-bold text-lg mb-2">
+      <h3 className="text-center dark:text-white font-bold text-lg mb-2">
         {open ? "Logo" : "A"}
       </h3>
 
@@ -59,9 +61,7 @@ function MenuItem({ label, path }: MenuItemProps) {
         px-3 py-2 rounded-lg cursor-pointer
         transition text-sm font-medium block
         ${
-          isActive
-            ? "bg-blue-600 text-white"
-            : "text-gray-700 hover:bg-gray-100"
+          isActive ? "bg-blue-600 text-white" : "text-gray-700  dark:text-white"
         }
         `
       }

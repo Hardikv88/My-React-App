@@ -4,21 +4,18 @@ import React, { useState } from "react";
 import NotificationSettings from "./components/NotificationSettings";
 import SecuritySettings from "./components/SecuritySettings";
 import ThemeSettings from "./components/ThemeSettings";
-import { useTheme } from "../../context/ThemeContext";
 
 const Settings: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("notifications");
-  const { theme } = useTheme();
   const tabs = [
     { key: "notifications", label: "Notifications" },
     { key: "security", label: "Security" },
     { key: "theme", label: "Theme" },
   ];
 
-  console.log("Current theme in Settings:", theme);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-4 md:p-8">
+    <div className=" min-h-screen from-gray-100 to-gray-200 p-4 md:p-8 ">
       <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-lg p-6 md:p-8">
         {/* Header */}
         <div className="mb-8">
