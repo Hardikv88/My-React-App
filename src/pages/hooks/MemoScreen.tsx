@@ -5,7 +5,6 @@ export default function MemoScreen() {
   const [input, setInput] = useState(0);
 
   function expensiveTask(num: number): number {
-    console.log("Inside Expensive task");
     for (let i = 0; i <= 1000000000; i++) {}
     return num * 2;
   }

@@ -10,7 +10,6 @@ export default function UseRefHookScreen() {
 
   function handleIncrement() {
     val.current = val.current + 1;
-    console.log("Value of val: ", val.current);
 
     // without useRef call val is not increment value
     //val = val + 1;
@@ -21,10 +20,6 @@ export default function UseRefHookScreen() {
   function changeColor() {
     btnRef.current.style.backgroundColor = "Red";
   }
-
-  useEffect(() => {
-    console.log("main useEffect call...");
-  });
 
   return (
     // Grid layout: 1 col on mobile, 3 on desktop

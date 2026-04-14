@@ -6,7 +6,6 @@ import { ShoppingCart } from "lucide-react";
 
 export default function CartViewScreen() {
   const cartItems = useSelector((state: RootState) => state.addItem);
-  console.log(cartItems.items);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = (id: number) => {

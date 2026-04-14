@@ -22,7 +22,6 @@ export default function RestApis() {
 
   useEffect(() => {
     getProducts();
-    console.log("get Token:", getToken());
   }, []);
 
   // GET Example

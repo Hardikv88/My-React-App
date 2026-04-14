@@ -6,7 +6,6 @@ import { useTheme } from "../../../context/ThemeContext";
 const ThemeSettings: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
-  console.log("Current theme:", theme);
   return (
     <div className="space-y-6">
       {/* Header */}

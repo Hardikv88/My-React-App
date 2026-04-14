@@ -1,7 +1,6 @@
 import React from "react";
  const ChildComponent = React.memo(
     (props: {ButtonName: String; handleClick: () => void }) => {
-  console.log('Child Component re-rendered....');
   return (
     <div className="flex flex-col items-center justify-center px-10 py-20 rounded">
         <button onClick={props.handleClick}

@@ -14,12 +14,10 @@ export default function LoginScreen() {
   const { login } = useAuth();
 
   const handleSubmit = () => {
-    console.log("Form Data:", email, password);
     getLoginUser(email, password);
   };
 
   const getLoginUser = async (email: string, password: string) => {
-    console.log("Login Data:", email, password);
     try {
       setLoading(true);
       const response = await apiHelper
@@ -32,7 +30,6 @@ export default function LoginScreen() {
         });
       login(response.data);
       setToken(response.data.accessToken); // Store entire user data (including tokens) securely
-      console.log("Login Response", response);
       setLoading(false);
     } catch (error) {
       setLoading(false);

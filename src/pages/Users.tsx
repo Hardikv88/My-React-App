@@ -9,7 +9,6 @@ function Users() {
   const [editValue, setEditValue] = useState("");
 
   const location = useLocation();
-  console.log(location.state);
 
   // Load from localStorage
   useEffect(() => {

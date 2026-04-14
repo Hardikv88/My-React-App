@@ -6,12 +6,10 @@ export default function CallBackHookScreen() {
   const previousFuncation = useRef(null);
 
   const handleClick = useCallback(() => {
-    console.log("Call handleClick");
     setCount(count + 1);
   }, [count]);
 
   const expensiveCalculation = useCallback(() => {
-    console.log("Run Expensive Calculation");
     let result = 0;
     for (let i = 0; i <= 10000000; i++) {
       result += i;

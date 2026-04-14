@@ -17,7 +17,6 @@ const addCardItem = createSlice({
         state.items.push(action.payload)
     },
     removeItem: (state, action: PayloadAction<number>) => {
-      console.log("Reducer called with:", action.payload);
       // we'll remove item by id
       state.items = state.items.filter(item => item.id !== action.payload);
     },
