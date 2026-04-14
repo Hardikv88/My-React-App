@@ -5,26 +5,20 @@ import { Outlet } from "react-router-dom";
 import { UserContextProvider } from "../context/UserContext";
 
 function Layout() {
-  const [page, setPage] = useState<string>("dashboard");
   const [open, setOpen] = useState<boolean>(true);
 
   return (
     <UserContextProvider>
-      <div style={styles.container} className="dark:bg-gray-900">
-        {/* Drawer */}
-        <Sidebar
-          open={open}
-          //onClick={(value) => setPage(value.toLocaleLowerCase())}
-        />
+      <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-[#111827]">
+        {/* Sidebar */}
+        <Sidebar open={open} onToggle={() => setOpen(!open)} />
 
-        <div className="flex flex-col flex-1">
-          {/* Right Side */}
-          <div>
-            <Header onMenuClick={() => setOpen(!open)} />
-          </div>
+        {/* Right side */}
+        <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+          <Header onMenuClick={() => setOpen(!open)} />
 
-          {/* Fragment Area */}
-          <main className="flex-1 overflow-auto bg-gray-100 dark:bg-gray-900">
+          {/* Page content */}
+          <main className="flex-1 overflow-y-auto p-5 bg-gray-50 dark:bg-[#111827]">
             <Outlet />
           </main>
         </div>
@@ -34,22 +28,3 @@ function Layout() {
 }
 
 export default Layout;
-
-const styles: any = {
-  container: {
-    display: "flex",
-    height: "auto",
-  },
-
-  main: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "flex-row",
-  },
-  content: {
-    padding: 20,
-    width: "100%",
-    background: "#f3f4f6",
-    flex: 1,
-  },
-};
