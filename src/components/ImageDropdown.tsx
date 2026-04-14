@@ -8,6 +8,7 @@ import Icon, {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { removeToken } from "../utils/LocalStorage";
 
 const items = [
   {
@@ -34,6 +35,7 @@ function UserMenu() {
   const handleClick = ({ key }: { key: string }) => {
     if (key === "3") {
       logout();
+      removeToken(); // Clear token from localStorage on logout
       // logout logic here
     } else if (key === "1") {
       // profile logic here

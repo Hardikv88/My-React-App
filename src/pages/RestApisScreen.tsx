@@ -6,6 +6,7 @@ import { AppDispatch } from "../features/store";
 import { addItem } from "../features/AddCard";
 import CardView from "../components/CardView";
 import ShowLoader from "../components/ShowLoader";
+import { getToken } from "../utils/LocalStorage";
 const Page_Size = 6;
 
 export default function RestApis() {
@@ -21,6 +22,7 @@ export default function RestApis() {
 
   useEffect(() => {
     getProducts();
+    console.log("get Token:", getToken());
   }, []);
 
   // GET Example
